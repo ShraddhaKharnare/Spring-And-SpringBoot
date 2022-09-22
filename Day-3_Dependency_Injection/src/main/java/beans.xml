@@ -5,13 +5,15 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
 
+<bean id="s" class="com.cg.depinj.Student">
+<property name="Student" value="Shraddha Kharnare"/>
+<property name="rollno" value="101"/> 
 
-<bean id="s" class="com.cg.diadv.StudentNew">
-<property name="math" >
-<bean class="com.cg.diadv.MathCheat"/>
+<bean id="s1" class="com.cg.depinj.Student">
+<property name="Student" value="Sumit Desale"/>
+<property name="rollno" value="106"/> 
+
 </property>
 </bean>
 
-
-
-</beans>
+ </beans>

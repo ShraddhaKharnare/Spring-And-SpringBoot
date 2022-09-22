@@ -5,15 +5,20 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
 
-<bean id="s" class="com.cg.depinj.Student">
-<property name="Student" value="Shraddha Kharnare"/>
-<property name="rollno" value="101"/> 
-
-<bean id="s1" class="com.cg.depinj.Student">
-<property name="Student" value="Sumit Desale"/>
-<property name="rollno" value="106"/> 
-
-</property>
+<context:annotation-config/>
+<!--First object--> 
+<bean id="animalheart" class="com.cg.springaw.Heart">
+<property name="nameofAnimal" value="Tiger"/>
+<property name="noofHeart"  value="2"/>
 </bean>
 
- </beans>
+<!--Second object--> 
+<bean id="Humanheart" class="com.cg.springaw.Heart">
+<property name="nameofAnimal" value="Human"/>
+<property name="noofHeart"  value="1"/>
+</bean>
+
+<bean id="human" class="com.cg.springaw.Human">
+   
+ </bean>
+</beans>

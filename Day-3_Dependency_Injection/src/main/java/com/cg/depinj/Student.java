@@ -1,36 +1,35 @@
-package com.cg.depinj;
+ package com.cg.depinj;
 
 
 //1.Dependency in term of literals
 public class Student
 {
-   private String Student_Name;    //variable
-   private int rollno;
-   
-   //DI using Constructor
-   //constructor-arg name should pass in beans.xml 
-   public Student(String student_Name, int rollno) {
+	private String StudentName;
+	private int rollno;
+
+	//Dependency Injection using constructor
+	//constructor-arg name should pass in beans.xml
+	public Student(String studentName, int rollno) {
 		super();
-		Student_Name = student_Name;
+		StudentName = studentName;
 		this.rollno = rollno;
 	}
-   
-   /*
-public String getStudent_Name() //use getters and setters for private
-{
-	return Student_Name;
-}
 
-public void setRollno(int rollno) {
-	this.rollno = rollno;
-}
-*/
-   
-//userDefined Method
-public void display()
-{
-	System.out.println("StudentName is :"+Student_Name+" "+"and Roll No is: "+rollno);
-}
+	
+	/*//DI using setters method
+	
+	public void setStudentName(String studentName) {
+		StudentName = studentName;
+	}
+	public void setRollno(int rollno) {
+		this.rollno = rollno;
+	}*/
+	//userDefined method
+	public void display()
+	{
+		System.out.println("StudentName is :"+StudentName+" "+"and Roll No is: "+rollno);
+	}
+
 
 
 
