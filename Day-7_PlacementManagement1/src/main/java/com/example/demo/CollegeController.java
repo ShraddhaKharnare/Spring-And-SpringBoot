@@ -14,69 +14,62 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 public class CollegeController
 {
-
 	@Autowired
 	private CollegeService service;
 	
 	//creation
-	@PostMapping("/college")
-	public void add(@RequestBody College col)
-	{
-		service.create(col);
-	}
-	//deletion
-	@DeleteMapping("/college/{id}")
-	public void remove(@PathVariable Integer id)
-	{
-		service.delete(id);
-	}
-	//Retrieve with all the records
-	@GetMapping("/college")
-	public List<College>list()
-	{
-		return service.listAll();
-		
-	}
-	//Retrieve with specific id
-	@GetMapping("/college/{id}")
-	public ResponseEntity<College> get(@PathVariable Integer col_id)
-	{
-		try {
-			College col=service.retrieve(col_id);
-			return new ResponseEntity<College>(col,HttpStatus.OK);
-		
-		}
-		catch(NoSuchElementException e)
+		@PostMapping("/college")
+		public void add(@RequestBody College c)
 		{
-			return new ResponseEntity<College>(HttpStatus.NOT_FOUND);
+			service.create(c);
 		}
-		
-		
-	}
-	//to update
-	@PutMapping("/college/{col_id}")
-	public ResponseEntity<College> update(@RequestBody College col, @PathVariable Integer col_id)
-	{
-		try {
-			@SuppressWarnings("unused")
-			College c1=service.retrieve(col_id);
-			service.create(col);
-			return new ResponseEntity<College>(col,HttpStatus.OK);
-		
-		}
-		catch(NoSuchElementException e)
+		//deletion
+		@DeleteMapping("/college/{collegeid}")
+		public void remove(@PathVariable Integer collegeid)
 		{
-			return new ResponseEntity<College>(HttpStatus.NOT_FOUND);
+			service.delete(collegeid);
+			
+		}
+		//Retrieve  with all the records
+		@GetMapping("/college")
+		public List<College>list()
+		{
+			return service.listAll();
+		}
+		//Retrieve with specific id
+		@GetMapping("/college/{collegeid}")
+		public ResponseEntity<College> get(@PathVariable Integer collegeid)
+		{
+			try {
+				College c=service.retrieve(collegeid);
+				return new ResponseEntity<College>(c,HttpStatus.OK);
+			
+			}
+			catch(NoSuchElementException e)
+			{
+				return new ResponseEntity<College>(HttpStatus.NOT_FOUND);
+			}
 		}
 		
-		
-	}
-	
-	
+		//updating
+		@PutMapping("/college/{collegeid}")
+		public ResponseEntity<College> update(@RequestBody College c, @PathVariable Integer collegeid)
+		{
+			try {
+				@SuppressWarnings("unused")
+				College c1=service.retrieve(collegeid);
+				service.create(c);
+				return new ResponseEntity<College>(c,HttpStatus.OK);
+			
+			}
+			catch(NoSuchElementException e)
+			{
+				return new ResponseEntity<College>(HttpStatus.NOT_FOUND);
+			}
+			
+			
+		}
 }
-
-

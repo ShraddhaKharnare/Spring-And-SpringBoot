@@ -14,61 +14,57 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 @RestController
-public class CertificateController
+public class CertificateController 
 {
-	@Autowired  
+	@Autowired                   
 	private CertificateService service;
-	
+
 	//creation
-		@PostMapping("/certificate")
-		public void add(@RequestBody Certificate cert)
-		{
-			service.create(cert);
-		}
+	@PostMapping("/certificate")
+	public void add(@RequestBody Certificate c)
+	{
+		service.create(c);
+	}
+	
+	//to Delete the data
+	@DeleteMapping("/admin/{id}")
+	public void remove(@PathVariable Integer id)
+	{
+		service.delete(id);
+	}
+	
+	//Retrieve with all  the records
+	@GetMapping("/certificate")
+	public List<Certificate>list()
+	{
+		return service.listAll();
 		
-		//to Delete the data
-		@DeleteMapping("/certificate/{cert_id}")
-		public void remove(@PathVariable Integer cert_id)
+	}
+	
+	//Retrieve with specific ID
+	@GetMapping("/certificate/{id}")
+	public ResponseEntity<Certificate> get(@PathVariable Integer id)
+	{
+		try 
 		{
-			service.delete(cert_id);
-		}
-
-		//Retrieve with all  the records
-		@PutMapping("/certificate")
-		public List<Certificate>list()
+			Certificate c=service.retrieve(id);
+			return new ResponseEntity<Certificate>(c,HttpStatus.OK);
+		}	
+		catch(NoSuchElementException e)
 		{
-			return service.listAll();
-			
+			return new ResponseEntity<Certificate>(HttpStatus.NOT_FOUND);
 		}
-		
-		//Retrieve with specific ID
-		@GetMapping("/certificate/{cert_id}")
-		public ResponseEntity<Certificate> get(@PathVariable Integer cert_id)
+	}
+	   //to update 
+		@PutMapping("/certificate/{id}")
+		public ResponseEntity<Certificate> update(@RequestBody Certificate c, @PathVariable Integer id)
 		{
 			try 
 			{
-				Certificate cert=service.retrieve(cert_id);
-				return new ResponseEntity<Certificate>(cert,HttpStatus.OK);
-			}	
-			catch(NoSuchElementException e)
-			{
-				return new ResponseEntity<Certificate>(HttpStatus.NOT_FOUND);
-			}
-		}
-
-		 //to update 
-		@PutMapping("/certificate{cert_id}")
-		public ResponseEntity<Certificate> update(@RequestBody Certificate cert, @PathVariable Integer cert_id)
-		{
-			try 
-			{
-				@SuppressWarnings("unused")
-				Certificate cert1=service.retrieve(cert_id);
-				service.create(cert);
-				return new ResponseEntity<Certificate>(cert, HttpStatus.OK);
+				Certificate c1=service.retrieve(id);
+				service.create(c);
+				return new ResponseEntity<Certificate>(c1, HttpStatus.OK);
 			}	
 		    catch(NoSuchElementException e)
 			{
@@ -76,5 +72,5 @@ public class CertificateController
 			}
 	 
 		}
-		
+
 }

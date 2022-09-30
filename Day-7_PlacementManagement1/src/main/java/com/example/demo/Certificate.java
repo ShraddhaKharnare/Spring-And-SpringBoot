@@ -6,47 +6,48 @@ import javax.persistence.Id;
 @Entity
 public class Certificate 
 {
-
 	@Id
-    private Integer cert_id;
-    private Integer  year;
-   
-  //Super Class Constructor
-  	public Certificate() {
-  		super();
-  		// TODO Auto-generated constructor stub
-  	}
-  	
-  	// Parameterized Constructor
-  	public Certificate(Integer cert_id, Integer year) {
-  		super();
-  		this.cert_id = cert_id;
-  		this.year = year;
-  	}
-    
-    
-  //Getters and setters method
+	private long id;
+	private Integer year;
+	
+	//Super class method
+	public Certificate() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	//parameterized constructor
+	public Certificate(long id, Integer year) {
+		super();
+		this.id = id;
+		this.year = year;
+	}
+
+	
+	//Getters and Setters Method
 	public long getId() {
-		return cert_id;
+		return id;
 	}
-	public void setId(Integer cert_id) {
-		this.cert_id = cert_id;
+
+	public void setId(long id) {
+		this.id = id;
 	}
-	public int getYear() {
+
+	public Integer getYear() {
 		return year;
 	}
+
 	public void setYear(Integer year) {
 		this.year = year;
 	}
-		
-	//ToString Method
-	
+
+	//to String Method
 	@Override
 	public String toString() {
-		return "Certificate [cert_id=" + cert_id + ", year=" + year + "]";
+		return "Certificate [id=" + id + ", year=" + year + "]";
 	}
 	
 	
 	
-		    
+
 }

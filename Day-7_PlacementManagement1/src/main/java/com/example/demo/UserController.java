@@ -47,7 +47,7 @@ public class UserController
 		try
 		{
 			User user=service.retrieve(user_id);
-			return new ResponseEntity<User>(HttpStatus.OK);
+			return new ResponseEntity<User>(user,HttpStatus.OK);
 		}
 		catch(NoSuchElementException e)
 		{
@@ -62,9 +62,10 @@ public class UserController
 	{
 		try
 		{
-			User existUser=service.retrieve(user_id);
+			@SuppressWarnings("unused")
+			User user1=service.retrieve(user_id);
 			service.create(user);
-			return new ResponseEntity<>(HttpStatus.OK);
+			return new ResponseEntity<>(user,HttpStatus.OK);
 		}
 		catch(NoSuchElementException e)
 		{

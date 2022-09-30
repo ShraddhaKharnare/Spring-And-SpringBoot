@@ -56,7 +56,7 @@ public class StudentController {
 		
 		
 	}
-	//to update
+	//updation
 	@PutMapping("/student/{id}")
 	public ResponseEntity<Student> update(@RequestBody Student s, @PathVariable Integer id)
 	{
@@ -74,10 +74,6 @@ public class StudentController {
 		
 		
 	}
-	
-	
-	
-	
 	
 
 }

@@ -3,66 +3,70 @@ package com.example.demo;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-
 @Entity
-public class College 
+public class College
 {
-	
 	@Id
-    private Integer col_id;
-    private String  collegeName;
-    private String  location;
+	private Integer collegeid;
+	private String collegename;
+	private String location;
 	
-  //Super Class Constructor
-    public College() {
+	
+	public College() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-    
- // Parameterized Constructor
-public College(Integer col_id, String collegeName, String location) {
-	super();
-	this.col_id = col_id;
-	this.collegeName = collegeName;
-	this.location = location;
-}
 
 
-//Getters and setters Method
-public Integer getCol_id() {
-	return col_id;
-}
+	public College(Integer collegeid, String collegename, String location) {
+		super();
+		this.collegeid = collegeid;
+		this.collegename = collegename;
+		this.location = location;
+	}
 
-public void setCol_id(Integer col_id) {
-	this.col_id = col_id;
-}
 
-public String getCollegeName() {
-	return collegeName;
-}
+	public Integer getCollegeid() {
+		return collegeid;
+	}
 
-public void setCollegeName(String collegeName) {
-	this.collegeName = collegeName;
-}
 
-public String getLocation() {
-	return location;
-}
+	public void setCollegeid(Integer collegeid) {
+		this.collegeid = collegeid;
+	}
 
-public void setLocation(String location) {
-	this.location = location;
-}
 
-//ToString Method
-@Override
-public String toString() {
-	return "College [col_id=" + col_id + ", collegeName=" + collegeName + ", location=" + location + "]";
+	public String getCollegename() {
+		return collegename;
+	}
+
+
+	public void setCollegename(String collegename) {
+		this.collegename = collegename;
+	}
+
+
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+
+	@Override
+	public String toString() {
+		return "College [collegeid=" + collegeid + ", collegename=" + collegename + ", location=" + location + "]";
+	}
+	
 }
 	
-		
 	
 	
 
 	
-    
-}
+	
+	
+
