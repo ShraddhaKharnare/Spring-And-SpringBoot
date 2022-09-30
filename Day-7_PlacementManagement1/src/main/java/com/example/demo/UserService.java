@@ -27,15 +27,15 @@ public class UserService
 	}
 	
     //to retrieve a single record
-	public User retrieve(Integer user_id)
+	public User retrieve(Integer User_id)
 	{
-		return repo.findById(user_id).get();
+		return repo.findById(User_id).get();
 	}
 
 	//to delete a data
-	public void delete(Integer user_id)
+	public void delete(Integer User_id )
 	{
-		repo.deleteById(user_id);
+		repo.deleteById(User_id);
 	}
 
 

@@ -12,6 +12,21 @@ public class User
 	private String user_type;
 	private String user_pass;
 	
+	//Super Class Constructor
+		public User() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+		
+		// Parameterized Constructor
+		public User(int user_id, String user_name, String user_type, String user_pass) {
+			super();
+			this.user_id = user_id;
+			this.user_name = user_name;
+			this.user_type = user_type;
+			this.user_pass = user_pass;
+		}
+	
 	//Getters and setters method
 	public int getUser_id() {
 		return user_id;
@@ -45,20 +60,7 @@ public class User
 				+ user_pass + "]";
 	}
 	
-	//Super Class Constructor
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
-	// Parameterized Constructor
-	public User(int user_id, String user_name, String user_type, String user_pass) {
-		super();
-		this.user_id = user_id;
-		this.user_name = user_name;
-		this.user_type = user_type;
-		this.user_pass = user_pass;
-	}
 	
 	
 	

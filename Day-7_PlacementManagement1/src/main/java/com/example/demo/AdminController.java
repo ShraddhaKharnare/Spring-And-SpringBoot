@@ -22,21 +22,21 @@ public class AdminController
 	private AdminService service;
 
 	//creation
-	@PostMapping("/Admin")
+	@PostMapping("/admin")
 	public void add(@RequestBody Admin a)
 	{
 		service.create(a);
 	}
 	
 	//to Delete the data
-	@DeleteMapping("/Admin/{admin_id}")
+	@DeleteMapping("/admin/{admin_id}")
 	public void remove(@PathVariable Integer admin_id)
 	{
 		service.delete(admin_id);
 	}
 	
 	//Retrieve with all  the records
-	@GetMapping("/Admin{admin_id}")
+	@GetMapping("/admin")
 	public List<Admin>list()
 	{
 		return service.listAll();
@@ -44,6 +44,7 @@ public class AdminController
 	}
 	
 	//Retrieve with specific ID
+	@GetMapping("/admin/{admin_id}")
 	public ResponseEntity<Admin> get(@PathVariable Integer admin_id)
 	{
 		try 
@@ -57,7 +58,7 @@ public class AdminController
 		}
 	}
 	   //to update 
-		@PutMapping("/Admin{admin_id}")
+		@PutMapping("/admin/{admin_id}")
 		public ResponseEntity<Admin> update(@RequestBody Admin a, @PathVariable Integer admin_id)
 		{
 			try 

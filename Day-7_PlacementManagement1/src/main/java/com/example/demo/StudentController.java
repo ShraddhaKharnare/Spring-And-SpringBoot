@@ -1,5 +1,5 @@
-package com.example.demo;
 
+package com.example.demo;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -16,63 +16,68 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class StudentController
-{
+public class StudentController {
 	
-	@Autowired                   
+	@Autowired
 	private StudentService service;
-
+	
 	//creation
-	@PostMapping("/Student")
+	@PostMapping("/student")
 	public void add(@RequestBody Student s)
 	{
 		service.create(s);
 	}
-	
-	//to Delete the data
-	@DeleteMapping("/Student/{id}")
+	//deletion
+	@DeleteMapping("/student/{id}")
 	public void remove(@PathVariable Integer id)
 	{
 		service.delete(id);
 	}
-	
-	//Retrieve with all  the records
-	@GetMapping("/Student{id}")
+	//Retrieve with all the records
+	@GetMapping("/student")
 	public List<Student>list()
 	{
 		return service.listAll();
 		
 	}
-	
-	//Retrieve with specific ID
-	   public ResponseEntity<Student> get(@PathVariable Integer id)
-	   {
-		try 
-		{
+	//Retrieve with specific id
+	@GetMapping("/student/{id}")
+	public ResponseEntity<Student> get(@PathVariable Integer id)
+	{
+		try {
 			Student s=service.retrieve(id);
 			return new ResponseEntity<Student>(s,HttpStatus.OK);
-		}	
+		
+		}
 		catch(NoSuchElementException e)
 		{
 			return new ResponseEntity<Student>(HttpStatus.NOT_FOUND);
 		}
+		
+		
 	}
-	   //to update 
-		@PutMapping("/Student{id}")
-		public ResponseEntity<Student> update(@RequestBody Student s, @PathVariable Integer id)
-		{
-			try 
-			{
-				@SuppressWarnings("unused")
-				Student s1=service.retrieve(id);
-				service.create(s);
-				return new ResponseEntity<Student>(s, HttpStatus.OK);
-			}	
-		    catch(NoSuchElementException e)
-			{
-				return new ResponseEntity<Student>(HttpStatus.NOT_FOUND);
-			}
-	 
+	//to update
+	@PutMapping("/student/{id}")
+	public ResponseEntity<Student> update(@RequestBody Student s, @PathVariable Integer id)
+	{
+		try {
+			@SuppressWarnings("unused")
+			Student s1=service.retrieve(id);
+			service.create(s);
+			return new ResponseEntity<Student>(s,HttpStatus.OK);
+		
 		}
-	   
+		catch(NoSuchElementException e)
+		{
+			return new ResponseEntity<Student>(HttpStatus.NOT_FOUND);
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+
 }

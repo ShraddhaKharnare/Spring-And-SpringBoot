@@ -15,7 +15,26 @@ public class Student
 	private Integer  year;
 	private  Integer hallticketno;
 	
+	//Super Class Constructor
+		public Student() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
 	
+		// Parameterized Constructor
+		public Student(Integer id, String name, Integer roll, String qualificatn, String course, Integer year,
+				Integer hallticketno) {
+			super();
+			this.id = id;
+			this.name = name;
+			this.roll = roll;
+			qualification = qualificatn;
+			this.course = course;
+			this.year = year;
+			this.hallticketno = hallticketno;
+		}
+			
+		
 	//Getters and setters method
 	public Integer getId() {
 		return id;
@@ -67,24 +86,9 @@ public class Student
 				+ ", course=" + course + ", year=" + year + ", hallticketno=" + hallticketno + "]";
 	}
 	
-	//Super Class Constructor
-	public Student() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
-	// Parameterized Constructor
-	public Student(Integer id, String name, Integer roll, String qualificatn, String course, Integer year,
-			Integer hallticketno) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.roll = roll;
-		qualification = qualificatn;
-		this.course = course;
-		this.year = year;
-		this.hallticketno = hallticketno;
-	}
+	
+	
 	
 	
 	

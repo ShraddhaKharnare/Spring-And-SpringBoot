@@ -17,61 +17,62 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController
 {
-	@Autowired                   
-	private UserService service;
 
-	//creation
-	@PostMapping("/User")
-	public void add(@RequestBody User u)
-	{
-		service.create(u);
-	}
+	@Autowired
+	private UserService service;
 	
-	//to Delete the data
-		@DeleteMapping("/User/{user_id}")
-		public void remove(@PathVariable Integer user_id)
+	//creation of rows
+		@PostMapping("/user")
+		public void add(@RequestBody User user)
+		{
+			service.create(user);
+		}
+	//delete
+		@DeleteMapping("/user/{id}")
+		public void delete(@PathVariable Integer user_id)
 		{
 			service.delete(user_id);
 		}
-
-		//Retrieve with all  the records
-		@GetMapping("/User{user_id}")
-		public List<User>list()
+	
+	@GetMapping("/user")
+	public List<User>list()
+	{
+		return service.listAll();
+		
+	}
+	//retrieve a specific records from database
+	@GetMapping("/user/{user_id}")
+	public ResponseEntity<User>get(@PathVariable Integer user_id)
+	{
+		try
 		{
-			return service.listAll();
-			
+			User user=service.retrieve(user_id);
+			return new ResponseEntity<User>(HttpStatus.OK);
+		}
+		catch(NoSuchElementException e)
+		{
+			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
 		
-		//Retrieve with specific ID
-		   public ResponseEntity<User> get(@PathVariable Integer user_id)
-		   {
-			try 
-			{
-				User u=service.retrieve(user_id);
-				return new ResponseEntity<User>(u,HttpStatus.OK);
-			}	
-			catch(NoSuchElementException e)
-			{
-				return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-			}
+	}
+	
+	//update
+	@PutMapping("/user/{id}")
+	public ResponseEntity<?>update(@RequestBody User user,@PathVariable Integer user_id)
+	{
+		try
+		{
+			User existUser=service.retrieve(user_id);
+			service.create(user);
+			return new ResponseEntity<>(HttpStatus.OK);
 		}
-		   
-		 //to update 
-			@PutMapping("/User{user_id}")
-			public ResponseEntity<User> update(@RequestBody User u, @PathVariable Integer user_id)
-			{
-				try 
-				{
-					
-					@SuppressWarnings("unused")
-					User u1=service.retrieve(user_id);
-					service.create(u);
-					return new ResponseEntity<User>(u, HttpStatus.OK);
-				}	
-			    catch(NoSuchElementException e)
-				{
-					return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-				}
-		 
-			}
+		catch(NoSuchElementException e)
+		{
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+	}
+	
+	
+		
 }

@@ -11,6 +11,19 @@ public class Certificate
     private Integer cert_id;
     private Integer  year;
    
+  //Super Class Constructor
+  	public Certificate() {
+  		super();
+  		// TODO Auto-generated constructor stub
+  	}
+  	
+  	// Parameterized Constructor
+  	public Certificate(Integer cert_id, Integer year) {
+  		super();
+  		this.cert_id = cert_id;
+  		this.year = year;
+  	}
+    
     
   //Getters and setters method
 	public long getId() {
@@ -34,17 +47,6 @@ public class Certificate
 	}
 	
 	
-	//Super Class Constructor
-	public Certificate() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
-	// Parameterized Constructor
-	public Certificate(Integer cert_id, Integer year) {
-		super();
-		this.cert_id = cert_id;
-		this.year = year;
-	}
 		    
 }

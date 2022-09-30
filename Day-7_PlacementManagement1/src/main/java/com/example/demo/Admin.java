@@ -11,6 +11,22 @@ public class Admin
 	private String admin_name;
 	private String admin_pass;
 	
+
+	//Super Class Constructor
+	public Admin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+
+	// Parameterized Constructor
+	    public Admin(int admin_id, String admin_name, String admin_pass) {
+		super();
+		this.admin_id = admin_id;
+		this.admin_name = admin_name;
+		this.admin_pass = admin_pass;
+	}
+	
 	//Getters and setters method
 	public int getAdmin_id() {
 		return admin_id;
@@ -37,19 +53,5 @@ public class Admin
 		return "Admin [admin_id=" + admin_id + ", admin_name=" + admin_name + ", admin_pass=" + admin_pass + "]";
 	}
 	
-	//Super Class Constructor
-	public Admin() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	// Parameterized Constructor
-	    public Admin(int admin_id, String admin_name, String admin_pass) {
-		super();
-		this.admin_id = admin_id;
-		this.admin_name = admin_name;
-		this.admin_pass = admin_pass;
-	}
-
 	
 }

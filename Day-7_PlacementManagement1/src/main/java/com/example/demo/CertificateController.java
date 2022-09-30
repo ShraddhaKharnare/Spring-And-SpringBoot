@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,20 +23,21 @@ public class CertificateController
 	private CertificateService service;
 	
 	//creation
-		@PostMapping("/Certificate")
+		@PostMapping("/certificate")
 		public void add(@RequestBody Certificate cert)
 		{
 			service.create(cert);
 		}
 		
 		//to Delete the data
-		@DeleteMapping("/Certificate{cert_id}")
+		@DeleteMapping("/certificate/{cert_id}")
 		public void remove(@PathVariable Integer cert_id)
 		{
 			service.delete(cert_id);
 		}
 
 		//Retrieve with all  the records
+		@PutMapping("/certificate")
 		public List<Certificate>list()
 		{
 			return service.listAll();
@@ -43,6 +45,7 @@ public class CertificateController
 		}
 		
 		//Retrieve with specific ID
+		@GetMapping("/certificate/{cert_id}")
 		public ResponseEntity<Certificate> get(@PathVariable Integer cert_id)
 		{
 			try 
@@ -57,7 +60,7 @@ public class CertificateController
 		}
 
 		 //to update 
-		@PutMapping("/Certificate{cert_id}")
+		@PutMapping("/certificate{cert_id}")
 		public ResponseEntity<Certificate> update(@RequestBody Certificate cert, @PathVariable Integer cert_id)
 		{
 			try 
